@@ -18,5 +18,5 @@ Route::get('/', function () {
 Route::get('index','IndexController@index'); 
 //登录页面
 Route::get('login','IndexController@login'); 
-// 个人中心
-Route::get('usercenter','User_ManController@index'); 
+//用户中心-个人
+Route::get('usercenter','User_usController@index'); 
