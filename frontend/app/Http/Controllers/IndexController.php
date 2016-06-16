@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Validator;
+use Session;
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -18,6 +20,8 @@ class IndexController extends Controller
      */
 	public function index()
 	{
+		$user=DB::table('pan_user')->where('us_id','1')->select('us_id','us_name','us_email','us_type')->get();
+		Session::put('user',$user[0]);
 		return view('index');
 	}
 
