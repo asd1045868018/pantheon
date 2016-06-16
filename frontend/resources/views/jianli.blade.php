@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb"><head>
-</script><script type="text/javascript" async="" src="style/js/conversion.js"></script><script src="style/js/allmobilize.min.js" charset="utf-8" id="allmobilize"></script><style type="text/css"></style>
+<script src="style/js/allmobilize.min.js" charset="utf-8" id="allmobilize"></script>
+<style type="text/css"></style>
 <meta content="no-siteapp" http-equiv="Cache-Control">
 <link  media="handheld" rel="alternate">
 <!-- end 云适配 -->
@@ -12,10 +13,7 @@
 <meta content="QIQ6KC1oZ6" name="baidu-site-verification">
 
 <!-- <div class="web_root"  style="display:none">h</div> -->
-<script type="text/javascript">
-var ctx = "h";
-console.log(1);
-</script>
+
 <link href="h/images/favicon.ico" rel="Shortcut Icon">
 <link href="style/css/style.css" type="text/css" rel="stylesheet">
 <link href="style/css/external.min.css" type="text/css" rel="stylesheet">
@@ -34,38 +32,7 @@ var youdao_conv_id = 271546;
 <script src="style/js/ajaxCross.json" charset="UTF-8"></script></head>
 <body>
 <div id="body">
-	<div id="header">
-    	<div class="wrapper">
-    		<a class="logo" href="h/">
-    			<img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="style/images/logo.png">
-    		</a>
-    		<ul id="navheader" class="reset">
-    			<li><a href="index.html">首页</a></li>
-    			<li><a href="companylist.html">公司</a></li>
-    			<li><a target="_blank" href="h/toForum.html">论坛</a></li>
-    				    			<li class="current"><a rel="nofollow" href="jianli.html">我的简历</a></li>
-	    						    		</ul>
-        	        	<dl class="collapsible_menu">
-            	<dt>
-           			<span>jason&nbsp;</span> 
-            		<span class="red dn" id="noticeDot-0"></span>
-            		<i></i>
-            	</dt>
-                                	<dd><a rel="nofollow" href="jianli.html">我的简历</a></dd>
-                	                	<dd><a href="collections.html">我收藏的职位</a></dd>
-                	                	                	<dd class="btm"><a href="subscribe.html">我的订阅</a></dd>
-                	<dd><a href="create.html">我要招人</a></dd>
-                                                <dd><a href="accountBind.html">帐号设置</a></dd>
-                                <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
-            </dl>
-                                    <div class="dn" id="noticeTip">
-            	<span class="bot"></span>
-				<span class="top"></span>
-				<a target="_blank" href="delivery.html"><strong>0</strong>条新投递反馈</a>
-				<a class="closeNT" href="javascript:;"></a>
-            </div>
-                    </div>
-    </div><!-- end #header -->
+	@include('top')
     <div id="container">
         
   		<div class="clearfix">
@@ -97,8 +64,8 @@ var youdao_conv_id = 271546;
             		<h2>基本信息</h2>
             		<span class="c_edit"></span>
             		<div class="basicShow">
-            			            			<span>jason |  男 |    大专 |  3年工作经验<br>
-            			            			18644444444 | jason@qq.com<br>
+            			<span>jason |  男 |    大专 |  3年工作经验<br>
+            			18644444444 | jason@qq.com<br>
             			</span>
             			<div class="m_portrait">
 	                    	<div></div>
@@ -107,9 +74,10 @@ var youdao_conv_id = 271546;
             		</div><!--end .basicShow-->
 
             		<div class="basicEdit dn">
-            			<form id="profileForm">
+            			<form id="profileForm" >
 						  <table>
-						    <tbody><tr>
+						    <tbody>
+						    <tr>
 						      <td valign="top">
 						        <span class="redstar">*</span>
 						      </td> 
@@ -138,13 +106,13 @@ var youdao_conv_id = 271546;
 						      	<input type="hidden" id="topDegree" value="大专" name="topDegree">
 						        <input type="button" value="大专" id="select_topDegree" class="profile_select_190 profile_select_normal">
 								<div class="boxUpDown boxUpDown_190 dn" id="box_topDegree" style="display: none;">
-						        	<ul>
-						        								        			<li>大专</li>
-						        								        			<li>本科</li>
-						        								        			<li>硕士</li>
-						        								        			<li>博士</li>
-						        								        			<li>其他</li>
-						        								        	</ul>
+						        <ul>
+						        <li>大专</li>
+						        <li>本科</li>					        
+						        <li>硕士</li>					        
+						        <li>博士</li>						
+						        <li>其他</li>					        
+						        </ul>
 						        </div>  
 						      </td>
 						      <td valign="top">
@@ -154,20 +122,7 @@ var youdao_conv_id = 271546;
 						          <input type="hidden" id="workyear" value="" name="workyear">
 						          <input type="button" value="" id="select_workyear" class="profile_select_190 profile_select_normal">
 								  <div class="boxUpDown boxUpDown_190 dn" id="box_workyear" style="display: none;">
-						          	 <ul>
-						        								        			<li>应届毕业生</li>
-						        								        			<li>1年</li>
-						        								        			<li>2年</li>
-						        								        			<li>3年</li>
-						        								        			<li>4年</li>
-						        								        			<li>5年</li>
-						        								        			<li>6年</li>
-						        								        			<li>7年</li>
-						        								        			<li>8年</li>
-						        								        			<li>9年</li>
-						        								        			<li>10年</li>
-						        								        			<li>10年以上</li>
-						        								        	 </ul>
+						          	 <ul>						        			<li>应届毕业生</li>    				<li>1年</li>		        	<li>2年</li>	        			<li>3年</li>	        			<li>4年</li>	        			<li>5年</li>	        			<li>6年</li>	        			<li>7年</li>	        			<li>8年</li>	        			<li>9年</li>	        			<li>10年</li>	        			<li>10年以上</li>        	 </ul>
 						          </div>  
 						      </td>
 						    </tr>
@@ -193,19 +148,19 @@ var youdao_conv_id = 271546;
 						          <input type="hidden" id="currentState" value="" name="currentState">
 						          <input type="button" value="目前状态" id="select_currentState" class="profile_select_410 profile_select_normal">
 								  <div class="boxUpDown boxUpDown_410 dn" id="box_currentState" style="display: none;">
-						          	  <ul>
-						        								        			<li>我目前已离职，可快速到岗</li>
-						        								        			<li>我目前正在职，正考虑换个新环境</li>
-						        								        			<li>我暂时不想找工作</li>
-						        								        			<li>我是应届毕业生</li>
-						        								        	  </ul>
+						          	  <ul>					        	
+						          	  <li>我目前已离职，可快速到岗</li> 
+						          	  <li>我目前正在职，正考虑换个新环境</li>
+						          	  <li>我暂时不想找工作</li>
+						          	  <li>我是应届毕业生</li>	        
+						          	  </ul>
 						          </div>  
 						      </td>
 						    </tr>
 						    <tr>
 						      <td></td> 
 						      <td colspan="3">
-						          <input type="submit" value="保 存" class="btn_profile_save">
+						          <input type="submit"   value="保 存" class="btn_profile_save">
 						          <a class="btn_profile_cancel" href="javascript:;">取 消</a>
 						      </td>
 						    </tr>
@@ -1523,7 +1478,7 @@ var youdao_conv_id = 271546;
 <script>
 $(function(){
 	$.ajax({
-        url:ctx+"/mycenter/showQRCode",
+        url:"/mycenter/showQRCode",
         type:"GET",
         async:false
    	}).done(function(data){
@@ -1535,7 +1490,7 @@ $(function(){
 	if(!$.cookie(sessionId)){
 		$.cookie(sessionId, 0, {expires: 1});
 	}
-	if($.cookie(sessionId) &amp;&amp; $.cookie(sessionId) != 5){
+	if($.cookie(sessionId) && $.cookie(sessionId) != 5){
 		$('#qr_cloud_resume').removeClass('dn');
 	}
 	$('#qr_cloud_resume .close').click(function(){
@@ -1607,6 +1562,20 @@ var CallCenter = {
 		}
 };
 CallCenter.init(url);
+</script>
+<script>
+$('form').submit(function() {
+	console.log($(this).serialize());
+	return false;
+   $.ajax({
+   	url:"{{URL('postresume')}}",
+   	type:"get",
+   	data:$(this).serialize(),
+   	success:function(msg){
+   		console.log(msg);
+   	}
+   })
+});
 </script>
 
 <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

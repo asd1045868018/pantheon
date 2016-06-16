@@ -13,8 +13,8 @@
 
 <!-- <div class="web_root"  style="display:none">h</div> -->
 <script type="text/javascript">
-var ctx = "h";
-console.log(1);
+// var ctx = "h";
+// console.log(1);
 </script>
 <link href="h/images/favicon.ico" rel="Shortcut Icon">
 <link href="style/css/style.css" type="text/css" rel="stylesheet">
@@ -35,63 +35,35 @@ var youdao_conv_id = 271546;
 </head>
 <body>
 <div id="body">
-	<div id="header">
-    	<div class="wrapper">
-    		<a class="logo" href="h/">
-    			<img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="style/images/logo.png">
-    		</a>
-    		<ul id="navheader" class="reset">
-    			<li><a href="index.html">首页</a></li>
-    			<li><a href="companylist.html">公司</a></li>
-    			<li><a target="_blank" href="h/toForum.html">论坛</a></li>
-    				    			<li>
-	    				<a rel="nofollow" href="positions.html">简历管理</a>
-	    					    			</li>
-	    							    			<li><a rel="nofollow" href="create.html">发布职位</a></li>
-	    		    		</ul>
-        	        	<dl class="collapsible_menu">
-            	<dt>
-           			<span>jason&nbsp;</span> 
-            		<span class="red dn" id="noticeDot-1"></span>
-            		<i></i>
-            	</dt>
-                                	<dd style="display: none;"><a href="positions.html">我发布的职位</a></dd>
-                	<dd style="display: none;"><a href="positions.html">我收到的简历</a></dd>
-                	<dd class="btm" style="display: none;"><a href="myhome.html">我的公司主页</a></dd>
-                	<dd style="display: none;"><a href="list.html">我要找工作</a></dd>
-                                                <dd style="display: none;"><a href="accountBind.html">帐号设置</a></dd>
-                                <dd class="logout" style="display: none;"><a rel="nofollow" href="login.html">退出</a></dd>
-            </dl>
-                                </div>
-    </div><!-- end #header -->
+	@include('top')
     <div id="container">
         	<div class="user_bindSidebar">
     <dl id="user_sideBarmenu" class="user_sideBarmenu">
      	        <dt><h3>帐号设置</h3></dt>
-                <dd><a class="hover" href="accountBind.html">帐号绑定</a></dd>
-        <dd><a href="updatePwd.html">修改密码</a></dd>
+                <dd><a class="hover" href="{{'account'}}">帐号信息</a></dd>
+        <dd><a href="{{'updatepwd'}}">修改密码</a></dd>
             </dl>
 </div>
 <input type="hidden" id="hasSidebar" value="1">	<div class="user_bindContent">
         <dl class="c_section">
             <dt>
-            <h2><em></em>帐号绑定</h2>
+            <h2><em></em>帐号信息</h2>
             </dt>
             <dd id="pad">
+            <input type="hidden" name="_token" id="_token" value="<?php echo csrf_token() ?>"/>
                 <ul class="user_noModify">
-                    <li>当前登录帐号：<span>jason@qq.com</span> </li>
-                    <li>绑定后，你可以同时使用以下方式登录拉勾</li>
+                    <li>当前用户名：<span><?=$user->us_name?></span>
+                    <a id="us_name" class="up" href="javascript:;">修改</a> </li>
                 </ul>
-                <dl class="user_thirdLogin">
-                    <dt><img alt="qq" src="style/images/qq.png"></dt>
-                                        	<dd>已绑定QQ帐号  <span>jason</span>
-                    	 	<a id="cancelBind" href="javascript:;">解除绑定</a>
-                    	 </dd>
-                	                </dl>
-				<dl class="user_thirdLogin">
-                    <dt><img alt="weibo" src="style/images/weibo.png"></dt>
-                                        	<dd><a href="h/ologin/bind/sina.html">绑定新浪微博帐号</a></dd>
-                                    </dl>
+               	<ul class="user_noModify">
+                    <li>帐号绑定手机号：<span><?=$user->us_tel?></span>
+                    <a id="us_tel" class="up" href="javascript:;">修改</a> </li>
+                </ul>
+				<ul class="user_noModify">
+                    <li>帐号绑定邮箱：<span><?=$user->us_email?></span> 
+					<a id="us_email" class="up" href="javascript:;">修改</a>
+                    </li>
+                </ul>
             </dd>
         </dl>
         <input type="hidden" value="" id="s">
@@ -100,7 +72,7 @@ var youdao_conv_id = 271546;
 <!------------------------------------- 弹窗lightbox ----------------------------------------->
 <div style="display:none;">
 	<!-- 【情况1：第三方首次登录绑定自有帐号】 帐号绑定 : 帐号绑定成功后，未保留的帐号信息将不可恢复 -->	
-    <div style="overflow:auto;" class="popup " id="confirmBind1">
+    <div style="overflow:auto;" class="popup " id="formBind1">
 	    <input type="hidden" id="oldAccountSecondConfirm" value="1">
 	    <div class="user_bindSuccecc">点击“确认绑定”后，您<span>未选择的帐号信息</span> 将被彻底删除，包括： </div>
 	    <div class="user_noRecoverInfos">
@@ -132,7 +104,7 @@ var youdao_conv_id = 271546;
     </div><!--/#confirmUnbind-->
     
     <!-- 帐号绑定 : 绑定时发现需要绑定的帐号已经绑定了其他的帐号时提示  -->	
-    <div style="overflow:auto;" class="popup" id="bindTips">
+    <div style="overflow:auto;" class="popup" id="formBind1">
      	<table>
          	<tbody><tr>
          		<td> 
@@ -288,3 +260,39 @@ $(function(){
 
 
 <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>
+<script>
+// 即点即改
+	$(function () {
+		$(document).on('click','.up',function(){
+	        var ziduan=$(this).attr('id');
+        	var span=$(this).parent().find('span');
+        	var old_val=span.text();
+        	var input=$("<input type='text' style='width:200px;'/>");
+	        span.html(input);
+	        var _token=$("#_token").val();
+	        input.focus().val($.trim(old_val));
+        	input.click(function(){
+            	return  false;
+        	})
+        	input.blur(function(){
+            var new_val=$(this).val();
+            if(new_val!=old_val){
+                $.ajax({
+                    type: "POST",
+                    url: "{{url('upbind_pro')}}",
+                    data: "value="+new_val+"&ziduan="+ziduan+"&_token="+_token,
+                    success: function(msg){
+                        if(msg==1){
+                            span.text(new_val);
+                        }else{
+                            span.text(old_val);
+                        }
+                    }
+                });
+            }else{
+                span.text(old_val);
+            }
+        });
+    	});
+	})
+</script>
