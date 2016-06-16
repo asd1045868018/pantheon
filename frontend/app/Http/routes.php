@@ -18,5 +18,28 @@ Route::get('/', function () {
 Route::get('index','IndexController@index'); 
 //登录页面
 Route::get('login','IndexController@login'); 
-//用户中心-个人
-Route::get('usercenter','User_usController@index'); 
+//账号管理
+Route::get('account','AccountController@index'); 
+// 修改密码页面
+Route::get('updatepwd','AccountController@updatepwd'); 
+//修改密码
+Route::post('uppwd_pro','AccountController@uppwd_pro'); 
+// 账号信息即点即改
+Route::post('upbind_pro','AccountController@upbind_pro'); 
+//公司
+Route::get('company','CompanyController@index');
+//我的简历
+Route::get('jianli','JianliController@index');
+//发布职位
+Route::get('Job','JobController@index');
+//前台注册
+Route::get('register','IndexController@register');
+// 邮箱
+Route::get('/send','AccountController@send');
+// 个人简历
+Route::get('getresume','UserController@getresume');
+Route::post('postresume','UserController@postresume');
+// 收藏的职位
+Route::get('getcollections','UserController@getcollections');
+// 已投递简历
+Route::get('getdelivery','UserController@getdelivery');
