@@ -42,7 +42,7 @@ var youdao_conv_id = 271546;
             		<h2 style='font-size: 18px;font-weight: 600;'>基本信息</h2>
             	</div><!--end #resumeScore-->
 <div class="basicEdit dn" style="display: block;">
-            			<form id="profileForm" method="post" action="{{URL('postresume')}}">
+            			<form id="profileForm" method="post" action="{{URL('postresume01')}}">
 						  <table>
 						    <tbody>
 						    
@@ -73,7 +73,7 @@ var youdao_conv_id = 271546;
 						        <span class="redstar">*</span>
 						      </td> 
 						      <td>
-						      	<input type="hidden" id="topDegree" value="" name="topDegree">
+						      	<input type="hidden" id="topDegree" value="" name="re_study">
 						        <input type="button" value="学历" id="select_topDegree" class="profile_select_190 profile_select_normal">
 								<div class="boxUpDown boxUpDown_190 dn" id="box_topDegree" style="display: none;">
 						        <ul>
@@ -87,7 +87,7 @@ var youdao_conv_id = 271546;
 						        <span class="redstar">*</span>
 						      </td> 
 						      <td>
-						          <input type="hidden" id="workyear" value="" name="workyear">
+						          <input type="hidden" id="workyear" value="" name="re_suffer">
 						          <input type="button" value="工作年限" id="select_workyear" class="profile_select_190 profile_select_normal">
 								  <div class="boxUpDown boxUpDown_190 dn" id="box_workyear" style="display: none;">
 						          	 <ul>	
@@ -99,11 +99,27 @@ var youdao_conv_id = 271546;
 						      </td>
 						    </tr>
 						    <tr>
+						    	<td></td>
+						    	<td>
+						    		<div class="fl">
+		            						<input type="hidden" class="companyYearStart" value="" name="re_birthday">
+								        	<input type="button" value="出生年份" class="profile_select_139 profile_select_normal select_companyYearStart">
+											<div class="box_companyYearStart boxUpDown boxUpDown_139 dn" style="display: none;">
+									            <ul>
+									            @for($i=1980;$i < 2016;$i++)
+									            <li>{{$i}}</li>			
+									       		@endfor
+									          </ul>
+									        </div>
+										</div>
+						    	</td>
+						    </tr>
+						    <tr>
 						      <td valign="top">
 						        <span class="redstar">*</span>
 						      </td> 
 						      <td colspan="3">
-						          <input type="text" placeholder="手机号码" value="18644444444" name="tel" id="tel">
+						          <input type="text" placeholder="手机号码" value="18644444444" name="re_tel" id="tel">
 						      </td>
 						   	</tr>
 						   	<tr>
@@ -111,13 +127,21 @@ var youdao_conv_id = 271546;
 						        <span class="redstar">*</span>
 						      </td> 
 						      <td colspan="3">
-						          <input type="text" placeholder="接收面试通知的邮箱" value="jason@qq.com" name="email" id="email">
+						          <input type="text" placeholder="接收面试通知的邮箱" value="jason@qq.com" name="re_email" id="email">
 						      </td>
 						    </tr>
 						    <tr>
+						      <td valign="top">
+						        <span class="redstar">*</span>
+						      </td> 
+						      <td colspan="3">
+						          <input type="text" placeholder="现居住地" value="" name="re_address" >
+						      </td>
+						   	</tr>
+						    <tr>
 						      <td valign="top"> </td> 
 						      <td colspan="3">
-						          <input type="hidden" id="currentState" value="" name="currentState">
+						          <input type="hidden" id="currentState" value="" name="re_current">
 						          <input type="button" value="目前状态" id="select_currentState" class="profile_select_410 profile_select_normal">
 								  <div class="boxUpDown boxUpDown_410 dn" id="box_currentState" style="display: none;">
 						          	  <ul>
