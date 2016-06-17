@@ -37,7 +37,6 @@ var youdao_conv_id = 271546;
    <div id="container"> 
     <div class="clearfix"> 
      <div class="profile_box" id="expectJob"> 
-      <h2>期望工作</h2> 
       <span class="c_edit dn"></span> 
       <div class="expectShow dn"> 
        <span></span> 
@@ -47,8 +46,11 @@ var youdao_conv_id = 271546;
        <form action="postresume02" method="post" ="" id="expectForm" > 
         <table> 
          <tbody> 
+         <tr>
+          	<td colspan="3"><h2>期望工作</h2></td>
+          </tr>
           <tr> 
-           <td> <input type="hidden" id="expectCity" value="" name="expectCity" /> <input type="button" value="期望城市，如：北京" id="select_expectCity" class="profile_select_287 profile_select_normal" />
+           <td> <input type="hidden" id="expectCity" value="" name="re_city" /> <input type="button" value="期望城市，如：北京" id="select_expectCity" class="profile_select_287 profile_select_normal" />
            <input type="hidden" name="_token" value="<?= csrf_token() ?>" /> 
             <div class="boxUpDown boxUpDown_596 dn" id="box_expectCity" style="display: none;"> 
              <dl> 
@@ -156,26 +158,464 @@ var youdao_conv_id = 271546;
             </div> </td> 
            <td> 
             <ul class="profile_radio clearfix reset"> 
-             <li class="current"> 全职<em></em> <input type="radio" checked="" name="type" value="全职" /> </li> 
-             <li> 兼职<em></em> <input type="radio" name="type" value="兼职" /> </li> 
-             <li> 实习<em></em> <input type="radio" name="type" value="实习" /> </li> 
-            </ul> </td> 
+            @foreach($wk_type as $k=>$v)
+             <li @if($v->pro_name == '全职') class="current" @endif >{{$v->pro_name}}<em></em> <input type="radio" @if($v->pro_name == '全职') checked @endif name="re_job" value="{{$v->pro_name}}" /> </li> 
+            @endforeach
+            </td> 
           </tr> 
           <tr> 
-           <td> <input type="text" placeholder="期望职位，如：产品经理" value="" name="expectPosition" id="expectPosition" /> </td> 
-           <td> <input type="hidden" id="expectSalary" value="" name="expectSalary" /> <input type="button" value="期望月薪" id="select_expectSalary" class="profile_select_287 profile_select_normal" /> 
+           <td> <input type="text" placeholder="期望职位，如：产品经理" value="" name="re_position" id="expectPosition" /> </td> 
+           <td> <input type="hidden" id="expectSalary" value="" name="re_salsry" /> <input type="button" value="期望月薪" id="select_expectSalary" class="profile_select_287 profile_select_normal" /> 
             <div class="boxUpDown boxUpDown_287 dn" id="box_expectSalary" style="display: none;"> 
              <ul> 
-              <li>2k以下</li> 
-              <li>2k-5k</li> 
-              <li>5k-10k</li> 
-              <li>10k-15k</li> 
-              <li>15k-25k</li> 
-              <li>25k-50k</li> 
-              <li>50k以上</li> 
+             @foreach($salsry as $kk=>$vv)
+              <li id="{{$vv->pro_id}}">{{$vv->pro_name}}</li> 
+             @endforeach
              </ul> 
             </div> </td> 
-          </tr> 
+          </tr>
+          <tr>
+          	<td colspan="3"><h2>工作经历</h2></td>
+          </tr>
+          <tr> 
+            <td> <input type="text" placeholder="公司名称" name="company['name']" class="companyName" /> </td> 
+            <td> <input type="text" placeholder="职位名称，如：产品经理" name="company['positionName']" class="positionName" /> </td> 
+           </tr> 
+           <tr> 
+            <td> 
+             <div class="fl"> 
+              <input type="hidden" class="companyYearStart" value="" name="company['YearStart']" /> 
+              <input type="button" value="开始年份" class="profile_select_139 profile_select_normal select_companyYearStart" /> 
+              <div class="box_companyYearStart boxUpDown boxUpDown_139 dn" style="display: none;"> 
+               <ul> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="fl"> 
+              <input type="hidden" class="companyMonthStart" value="" name="company['MonthStart']" /> 
+              <input type="button" value="开始月份" class="profile_select_139 profile_select_normal select_companyMonthStart" /> 
+              <div style="display: none;" class="box_companyMonthStart boxUpDown boxUpDown_139 dn"> 
+               <ul> 
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="clear"></div> </td> 
+            <td> 
+             <div class="fl"> 
+              <input type="hidden" class="companyYearEnd" value="" name="company['YearEnd']" /> 
+              <input type="button" value="结束年份" class="profile_select_139 profile_select_normal select_companyYearEnd" /> 
+              <div class="box_companyYearEnd  boxUpDown boxUpDown_139 dn" style="display: none;"> 
+               <ul> 
+                <li>至今</li> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+                <li>1988</li> 
+                <li>1987</li> 
+                <li>1986</li> 
+                <li>1985</li> 
+                <li>1984</li> 
+                <li>1983</li> 
+                <li>1982</li> 
+                <li>1981</li> 
+                <li>1980</li> 
+                <li>1979</li> 
+                <li>1978</li> 
+                <li>1977</li> 
+                <li>1976</li> 
+                <li>1975</li> 
+                <li>1974</li> 
+                <li>1973</li> 
+                <li>1972</li> 
+                <li>1971</li> 
+                <li>1970</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="fl"> 
+              <input type="hidden" class="companyMonthEnd" value="" name="company['MonthEnd']" /> 
+              <input type="button" value="结束月份" class="profile_select_139 profile_select_normal select_companyMonthEnd" /> 
+              <div style="display: none;" class="box_companyMonthEnd boxUpDown boxUpDown_139 dn"> 
+               <ul> 
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="clear"></div> </td> 
+           </tr> 
+           <tr>
+            	<td colspan="2"><h2>项目经验</h2></td>
+            </tr> 
+            <tr> 
+            <td> <input type="text" placeholder="项目名称" name="project['name']" class="projectName" /> </td> 
+            <td> <input type="text" placeholder="担任职务，如：产品负责人" name="project['thePost']" class="thePost" /> </td> 
+           </tr> 
+           <tr> 
+            <td> 
+             <div class="fl"> 
+              <input type="hidden" class="projectYearStart" value="" name="project['YearStart']" /> 
+              <input type="button" value="开始年份" class="profile_select_139 profile_select_normal select_projectYearStart" /> 
+              <div class="box_projectYearStart  boxUpDown boxUpDown_139 dn" style="display: none;"> 
+               <ul> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+                <li>1988</li> 
+                <li>1987</li> 
+                <li>1986</li> 
+                <li>1985</li> 
+                <li>1984</li> 
+                <li>1983</li> 
+                <li>1982</li> 
+                <li>1981</li> 
+                <li>1980</li> 
+                <li>1979</li> 
+                <li>1978</li> 
+                <li>1977</li> 
+                <li>1976</li> 
+                <li>1975</li> 
+                <li>1974</li> 
+                <li>1973</li> 
+                <li>1972</li> 
+                <li>1971</li> 
+                <li>1970</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="fl"> 
+              <input type="hidden" class="projectMonthStart" value="" name="project['MonthStart']" /> 
+              <input type="button" value="开始月份" class="profile_select_139 profile_select_normal select_projectMonthStart" /> 
+              <div style="display: none;" class="box_projectMonthStart boxUpDown boxUpDown_139 dn"> 
+               <ul> 
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="clear"></div> </td> 
+            <td> 
+             <div class="fl"> 
+              <input type="hidden" class="projectYearEnd" value="" name="project['YearEnd']" /> 
+              <input type="button" value="结束年份" class="profile_select_139 profile_select_normal select_projectYearEnd" /> 
+              <div class="box_projectYearEnd  boxUpDown boxUpDown_139 dn" style="display: none;"> 
+               <ul> 
+                <li>至今</li> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+                <li>1988</li> 
+                <li>1987</li> 
+                <li>1986</li> 
+                <li>1985</li> 
+                <li>1984</li> 
+                <li>1983</li> 
+                <li>1982</li> 
+                <li>1981</li> 
+                <li>1980</li> 
+                <li>1979</li> 
+                <li>1978</li> 
+                <li>1977</li> 
+                <li>1976</li> 
+                <li>1975</li> 
+                <li>1974</li> 
+                <li>1973</li> 
+                <li>1972</li> 
+                <li>1971</li> 
+                <li>1970</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="fl"> 
+              <input type="hidden" class="projectMonthEnd" value="" name="project['MonthEnd']" /> 
+              <input type="button" value="结束月份" class="profile_select_139 profile_select_normal select_projectMonthEnd" /> 
+              <div style="display: none;" class="box_projectMonthEnd boxUpDown boxUpDown_139 dn"> 
+               <ul> 
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="clear"></div> </td> 
+           </tr> 
+           <tr> 
+            <td colspan="3"> <textarea class="projectDescription s_textarea" name="project['Description']" placeholder="项目描述"></textarea> 
+             <div class="word_count">
+              你还可以输入 
+              <span>500</span> 字
+             </div> </td> 
+           </tr> 
+          <tr>
+          	<td><h2>教育背景<span>（投递简历时必填）</span></h2> </td>
+          </tr>
+          <tr> 
+            <td> <input type="text" placeholder="学校名称" name="school['Name']" class="schoolName" /> </td> 
+            <td> <input type="hidden" class="degree" value="" name="school['degree']" /> <input type="button" value="学历" class="profile_select_287 profile_select_normal select_degree" /> 
+             <div class="box_degree boxUpDown boxUpDown_287 dn" style="display: none;"> 
+              <ul> 
+               <li>大专</li> 
+               <li>本科</li> 
+               <li>硕士</li> 
+               <li>博士</li> 
+               <li>其他</li> 
+              </ul> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td> <input type="text" placeholder="专业名称" name="school['professionalName']" class="professionalName" /> </td> 
+            <td> 
+             <div class="fl"> 
+              <input type="hidden" class="schoolYearStart" value="" name="school['YearStart']" /> 
+              <input type="button" value="开始年份" class="profile_select_139 profile_select_normal select_schoolYearStart" /> 
+              <div class="box_schoolYearStart boxUpDown boxUpDown_139 dn" style="display: none;"> 
+               <ul> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+                <li>1988</li> 
+                <li>1987</li> 
+                <li>1986</li> 
+                <li>1985</li> 
+                <li>1984</li> 
+                <li>1983</li> 
+                <li>1982</li> 
+                <li>1981</li> 
+                <li>1980</li> 
+                <li>1979</li> 
+                <li>1978</li> 
+                <li>1977</li> 
+                <li>1976</li> 
+                <li>1975</li> 
+                <li>1974</li> 
+                <li>1973</li> 
+                <li>1972</li> 
+                <li>1971</li> 
+                <li>1970</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="fl"> 
+              <input type="hidden" class="schoolYearEnd" value="" name="school['YearEnd']" /> 
+              <input type="button" value="结束年份" class="profile_select_139 profile_select_normal select_schoolYearEnd" /> 
+              <div style="display: none;" class="box_schoolYearEnd  boxUpDown boxUpDown_139 dn"> 
+               <ul> 
+                <li>2021</li> 
+                <li>2020</li> 
+                <li>2019</li> 
+                <li>2018</li> 
+                <li>2017</li> 
+                <li>2016</li> 
+                <li>2015</li> 
+                <li>2014</li> 
+                <li>2013</li> 
+                <li>2012</li> 
+                <li>2011</li> 
+                <li>2010</li> 
+                <li>2009</li> 
+                <li>2008</li> 
+                <li>2007</li> 
+                <li>2006</li> 
+                <li>2005</li> 
+                <li>2004</li> 
+                <li>2003</li> 
+                <li>2002</li> 
+                <li>2001</li> 
+                <li>2000</li> 
+                <li>1999</li> 
+                <li>1998</li> 
+                <li>1997</li> 
+                <li>1996</li> 
+                <li>1995</li> 
+                <li>1994</li> 
+                <li>1993</li> 
+                <li>1992</li> 
+                <li>1991</li> 
+                <li>1990</li> 
+                <li>1989</li> 
+                <li>1988</li> 
+                <li>1987</li> 
+                <li>1986</li> 
+                <li>1985</li> 
+                <li>1984</li> 
+                <li>1983</li> 
+                <li>1982</li> 
+                <li>1981</li> 
+                <li>1980</li> 
+                <li>1979</li> 
+                <li>1978</li> 
+                <li>1977</li> 
+                <li>1976</li> 
+                <li>1975</li> 
+                <li>1974</li> 
+                <li>1973</li> 
+                <li>1972</li> 
+                <li>1971</li> 
+                <li>1970</li> 
+               </ul> 
+              </div> 
+             </div> 
+             <div class="clear"></div> </td> 
+           </tr> 
           <tr> 
            <td colspan="2"> <input type="submit" value="保 存" class="btn_profile_save" /> <a class="btn_profile_cancel" href="javascript:;">取 消</a> </td> 
           </tr> 
