@@ -36,7 +36,7 @@ var youdao_conv_id = 271546;
 <body id="login_bg">
 	<div class="login_wrapper">
 		<div class="login_header">
-        	<a href="h/"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
+        	<a href="{{URL('index')}}"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
             <div id="cloud_s"><img src="style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
             <div id="cloud_m"><img src="style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
         </div>
@@ -61,7 +61,7 @@ var youdao_conv_id = 271546;
 			</form>
 			<div class="login_right">
 				<div>还没有拉勾帐号？</div>
-				<a  href="{{URL('register')}}"  class="registor_now">立即注册</a>
+				<a  href="{{URL('regist')}}"  class="registor_now">立即注册</a>
 			    <div class="login_others">使用以下帐号直接登录:</div>
 			    <a  href="h/ologin/auth/sina.html"  target="_blank" class="icon_wb" title="使用新浪微博帐号登录"></a>
 			    <a  href="h/ologin/auth/qq.html"  class="icon_qq" target="_blank" title="使用腾讯QQ帐号登录"></a>

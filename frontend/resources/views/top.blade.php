@@ -13,7 +13,7 @@
         <ul class="loginTop" >
             <li><a href="{{URL('login')}}" rel="nofollow">登录</a></li>
             <li>|</li>
-            <li><a href="{{URL('register')}}" rel="nofollow">注册</a></li>
+            <li><a href="{{URL('regist')}}" rel="nofollow">注册</a></li>
         </ul>
         @else
         <dl class="collapsible_menu">
@@ -31,8 +31,8 @@
             <dd><a rel="nofollow" href="{{URL('getdelivery')}}">已投递简历</a></dd>
             <dd class="btm"><a href="{{URL('collections')}}">我收藏的职位</a></dd>
             @endif
-            <dd><a href="accountBind.html">帐号设置</a></dd>
-            <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+            <dd><a href="{{URL('account')}}">帐号设置</a></dd>
+            <dd class="logout"><a rel="nofollow" href="{{URL('quit')}}">退出</a></dd>
         </dl>
         @endif
     </div>

@@ -44,7 +44,7 @@ var youdao_conv_id = 271546;
     	<input type="hidden" id="resubmitToken" value="" />
      	<div class="find_psw">
         	<img src="style/images/psw_step1.png" width="369" height="56" alt="找回密码第一步" />
-            <form id="pswForm" action="{{URL('send')}}" >
+            <form id="pswForm" action="{{URL('sender')}}" >
            		<input type="text" name="email" id="email" tabindex="1" value="" placeholder="请输入注册时使用的邮箱地址" />
                                 <input type="submit" id="submitLogin" value="下一步" />
             </form>

@@ -34,35 +34,7 @@ var youdao_conv_id = 271546;
 <script src="style/js/ajaxCross.json" charset="UTF-8"></script></head>
 <body>
 <div id="body">
-	<div id="header">
-    	<div class="wrapper">
-    		<a class="logo" href="h/">
-    			<img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="style/images/logo.png">
-    		</a>
-    		<ul id="navheader" class="reset">
-    			<li><a href="index.html">首页</a></li>
-    			<li><a href="companylist.html">公司</a></li>
-    			<li><a target="_blank" href="h/toForum.html">论坛</a></li>
-    				    			<li>
-	    				<a rel="nofollow" href="h/corpResume/unHandleResumes.html">简历管理</a>
-	    					    			</li>
-	    							    			<li><a rel="nofollow" href="create.html">发布职位</a></li>
-	    		    		</ul>
-        	        	<dl class="collapsible_menu">
-            	<dt>
-           			<span>jason&nbsp;</span> 
-            		<span class="red dn" id="noticeDot-1"></span>
-            		<i></i>
-            	</dt>
-                                	<dd><a href="positions.html">我发布的职位</a></dd>
-                	<dd><a href="positions.html">我收到的简历</a></dd>
-                	<dd class="btm"><a href="myhome.html">我的公司主页</a></dd>
-                	<dd><a href="list.html">我要找工作</a></dd>
-                                                <dd><a href="accountBind.html">帐号设置</a></dd>
-                                <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
-            </dl>
-                                </div>
-    </div><!-- end #header -->
+	@include('top')
     <div id="container">
         	<div class="user_bindSidebar">
     <dl id="user_sideBarmenu" class="user_sideBarmenu">
@@ -77,7 +49,7 @@ var youdao_conv_id = 271546;
             	<h2><em></em>修改密码</h2>
             </dt>
             <dd>
-            	  <form  method="post" action="{{'uppwd_pro'}}">
+            	  <form  method="post" action="{{'uppwd_pro'}}" onsubmit="return fun()">
                   <input type="hidden" name="_token" id="_token" value="<?php echo csrf_token() ?>"/>
             		<table class="savePassword">
             			<tbody><tr>
@@ -85,22 +57,24 @@ var youdao_conv_id = 271546;
             				<td class="c7"><?= $user->us_email?></td>
             			</tr>
             			<tr>
-            				<td class="label">当前密码</td>
+            				<td class="label">当前密码<span style="color:red">*</span></td>
             				<td>
-            					<input type="password" maxlength="16" id="oldpassword" name="oldpassword" style="background-image: url(style/images/img/0CQnd2Jos49xUAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;">
+                                <input type="hidden" id='aa' value="<?= $user->us_pwd?>">
+            					<input type="password" onblur="check_a()"  maxlength="16" id="oldpassword" name="oldpassword" style="background-image: url(style/images/img/0CQnd2Jos49xUAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;">
             					<span id="updatePwd_beError" style="display:none;" class="error">
             				</span></td>            				
             			</tr>
             			<tr>
-            				<td class="label">新密码</td>
-            				<td><input type="password" maxlength="16" id="newpassword" name="newpassword" style="background-image: url(style/images/img/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;"></td>
+
+            				<td class="label">新密码<span style="color:red">*</span></td>
+            				<td><input type="password" onblur="check_b()" maxlength="16" id="newpassword" name="newpassword" style="background-image: url(style/images/img/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;"><span id="s1" style="display:none;" class="error"></span></td>
             			</tr>
             			<tr>
-            				<td class="label">确认密码</td>
-            				<td><input type="password" maxlength="16" id="comfirmpassword" name="comfirmpassword" style="background-image: url(style/images/img/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;"></td>
+            				<td class="label">确认密码<span style="color:red">*</span></td>
+            				<td><input type="password" onblur="check_c()" maxlength="16" id="comfirmpassword" name="comfirmpassword" style="background-image: url(style/images/img/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=quot); background-repeat: no-repeat; background-attachment: scroll; background-position: right center;"><span id="s2" style="display:none;" class="error"></span></td>
             			</tr>
             			<tr>
-            				<td>&nbsp;</td>
+            				<td>&nbsp; <input type="hidden" id='id'  name='id' value="<?= $user->us_id?>"></td>
             				<td><input type="submit" value="保 存"></td>
             			</tr>
             		</tbody></table>
@@ -131,3 +105,84 @@ var youdao_conv_id = 271546;
 
 
 <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>
+
+
+<script>
+var flage=false;
+      /**
+       * 验证原密码是否正确
+       * @return {[type]} [description]
+       */
+      function check_a(){
+         oldpassword=$("#oldpassword").val();
+         if(oldpassword==''){
+          $('#updatePwd_beError').html('不能为空').show();
+          document.getElementById('updatePwd_beError').style.color='red';
+          flage=false;
+          return flage;
+          exit;
+         }
+         aa=$('#aa').val();
+         $.ajax({
+          type:"get",
+          url:"upwd?pwd="+oldpassword,
+          success(e){
+            if(e==aa){
+             flage=true;
+             return flage;
+            }else{
+             $('#updatePwd_beError').html('原密码错误').show();
+             document.getElementById('updatePwd_beError').style.color='red';
+             flage=false;
+             return flage;
+            }
+          }
+         })
+         return flage;
+      }
+     /**
+      * /验证新密码
+      */
+     function check_b(){
+       newpassword=$("#newpassword").val();
+       if(newpassword==''){
+         $('#s1').html('不能为空').show();
+         document.getElementById('s1').style.color='red';
+         
+         return false;
+         exit;
+       }else{
+         
+         return true;
+       }
+     }
+     /**
+      * 确认密码
+      */
+     function check_c(){
+      comfirmpassword=$("#comfirmpassword").val();
+      newpassword=$("#newpassword").val();
+       if(comfirmpassword==''){
+         $('#s2').html('不能为空').show();
+         document.getElementById('s2').style.color='red';
+         return false;
+         exit;
+       }
+       if(comfirmpassword==newpassword){
+        return true; 
+           
+       }else{
+         $('#s2').html('确认密码不一致').show();
+         document.getElementById('s2').style.color='red';
+         return false;
+       }
+     }
+
+     function fun(){
+        if(check_a()&&check_b()&&check_c()){
+           return true;
+        }else{
+            return false;
+        }
+     }
+</script>

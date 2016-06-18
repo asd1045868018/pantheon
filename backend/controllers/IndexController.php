@@ -14,6 +14,6 @@ class IndexController extends Controller
         
         return $this->render('index',['admin_id'=>$admin_id]);
     }
-
+   
 }
 ?>

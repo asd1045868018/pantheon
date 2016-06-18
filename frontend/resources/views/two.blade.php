@@ -36,7 +36,7 @@ var youdao_conv_id = 271546;
 <body id="login_bg">
 	<div class="login_wrapper">
 		<div class="login_header">
-        	<a href="index.html"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
+        	<a href="{{URL('index')}}"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
             <div id="cloud_s"><img src="style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
             <div id="cloud_m"><img src="style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
         </div>
@@ -45,8 +45,9 @@ var youdao_conv_id = 271546;
      	<div class="find_psw">
         	<img src="style/images/psw_step3.png" width="369" height="56" alt="找回密码第二步" />
             <form id="pswForm" action="{{URL('success')}}" onsubmit="return fun()" >
-           		<input type="text" name="email" onblur='check_a()' id="email" tabindex="1" value="" placeholder="请输入新密码" /><span id='s1'></span>
-           		<input type="text" name="email123" onblur='check_b()' id="email123" tabindex="1" value="" placeholder="请重新输入新密码" /><span id='s2'></span>
+              <input type="hidden" name='uid' value="{{Session::get('uid')}}">
+           		<input type="text" name="email" onblur='check_a()' id="email" tabindex="1" value="" placeholder="请输入新密码" /><span id="s1" style="display:none;" class="error"></span>
+           		<input type="text" name="email123" onblur='check_b()' id="email123" tabindex="1" value="" placeholder="请重新输入新密码" /><span id="s2" style="display:none;" class="error"></span>
                      <input type="submit" id="submitLogin" value="完成" />
             </form>
         </div>
@@ -56,17 +57,15 @@ var youdao_conv_id = 271546;
    function check_a(){
        email=$("#email").val();
        if(email==''){
-       	$("#s1").html('不能为空');
+       	$("#s1").html('不能为空').show();
        	 document.getElementById('s1').style.color='red';
          return false;
        }
        reg=/^[a-z][a-z0-9]{5,17}$/i;
        if(reg.test(email)){
-         $("#s1").html('可以使用');
-         document.getElementById('s1').style.color='blue';
          return true;
        }else{
-       	 $("#s1").html('不可以使用');
+       	 $("#s1").html('不可以使用').show();
        	 document.getElementById('s1').style.color='red';
        	 return false;
        }
@@ -76,16 +75,15 @@ var youdao_conv_id = 271546;
        email=$("#email").val();
        email123=$("#email123").val();
        if(email123==''){
-       	$("#s2").html('不能为空');
+       	$("#s2").html('不能为空').show();
        	 document.getElementById('s2').style.color='red';
          return false;
        }
        if(email==email123){
-         $("#s2").html('可以使用');
-         document.getElementById('s2').style.color='blue';
+        
          return true;
        }else{
-       	 $("#s2").html('密码不一致');
+       	 $("#s2").html('密码不一致').show();
        	 document.getElementById('s2').style.color='red';
        	 return false;
        }

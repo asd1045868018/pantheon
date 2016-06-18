@@ -20,13 +20,7 @@ class IndexController extends Controller
      */
 	public function index()
 	{
-		$user=DB::table('pan_user')->where('us_id','1')->select('us_id','us_name','us_email','us_type')->get();
-		Session::put('user',$user[0]);
 		return view('index');
 	}
 
-	public function login()
-	{
-		return view('login');
-	}
 }

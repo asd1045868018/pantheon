@@ -17,7 +17,9 @@ class AccountController extends Controller
 	 */
 	public function index()
 	{
-		$user = DB::table('pan_user')->where('us_id', '1')->first();
+		$arr=Session::get('user');
+		$object =  json_decode( json_encode($arr),true);
+		$user = DB::table('pan_user')->where('us_id', $object['us_id'])->first();
 		return view('accountBind',['user'=>$user]);
 	}
 
@@ -27,7 +29,9 @@ class AccountController extends Controller
 	 */
 	public function updatepwd()
 	{
-		return view('updatePwd',['user'=> DB::table('pan_user')->where('us_id', '1')->first()]);
+		$arr=Session::get('user');
+		 $object =  json_decode( json_encode($arr),true);
+		return view('updatePwd',['user'=> DB::table('pan_user')->where('us_id',$object['us_id'])->first()]);
 	}
 		/**
 	 * 修改账号密码
