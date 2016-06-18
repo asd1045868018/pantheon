@@ -56,8 +56,14 @@ Route::get('register','IndexController@register');
 // 邮箱
 Route::get('/send','AccountController@send');
 // 个人简历
-Route::get('getresume','UserController@getresume');
-Route::post('postresume','UserController@postresume');
+Route::get('getresume01','UserController@getresume01');
+Route::get('getresume02','UserController@getresume02');
+Route::get('getresume03','UserController@getresume03');
+Route::get('getresume04','UserController@getresume04');
+Route::post('postresume01','UserController@postresume01');
+Route::post('postresume02','UserController@postresume02');
+Route::post('postresume03','UserController@postresume03');
+Route::post('postresume04','UserController@postresume04');
 // 收藏的职位
 Route::get('getcollections','UserController@getcollections');
 // 已投递简历

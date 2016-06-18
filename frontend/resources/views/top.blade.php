@@ -29,7 +29,7 @@
             @else
             <dd><a rel="nofollow" href="{{URL('jianli')}}">我的简历</a></dd>
             <dd><a rel="nofollow" href="{{URL('getdelivery')}}">已投递简历</a></dd>
-            <dd class="btm"><a href="{{URL('collections')}}">我收藏的职位</a></dd>
+            <dd class="btm"><a href="{{URL('getcollections')}}">我收藏的职位</a></dd>
             @endif
             <dd><a href="{{URL('account')}}">帐号设置</a></dd>
             <dd class="logout"><a rel="nofollow" href="{{URL('quit')}}">退出</a></dd>
